@@ -17,7 +17,7 @@ class TraderSupportServiceAPI:
 
     ######### Gets #########
     def getDraftSups(self):
-        response = self.ses.get(self.Endpoint+"supplementary_declarations?filter=status={Draft}",headers=self.hrs) 
+        response = self.ses.get(self.Endpoint+"supplementary_declarations?filter=status=Draft",headers=self.hrs) 
         return response.json()
 
     def getSupDetails(self,supNumber):
