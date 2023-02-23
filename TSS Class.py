@@ -1,8 +1,10 @@
 import requests
 from base64 import b64encode
+from InputVariablesClass import InputVariablesClass 
 
-class TraderSupportServiceAPI:
+class TraderSupportServiceAPI(InputVariablesClass):
     def __init__(self, username, password):
+        super().__init__()
         usern = username
         passw = password
         userAndPass = b64encode(b"%s:%s" % (bytes(usern,  encoding='utf-8'),bytes(passw,  encoding='utf-8'))).decode("ascii")
@@ -13,50 +15,6 @@ class TraderSupportServiceAPI:
                 'Request':'application/json',
                 'Authorization' : f'Basic {userAndPass}'}
         self.Endpoint = "https://api.tradersupportservice.co.uk/api/x_fhmrc_tss_api/v1/tss_api/"
-
-        ## Sup Inputs
-        self.op_typeSups = None
-        self.sup_dec_number = None
-        self.declaration_choice = None
-        self.controlled_goods = None
-        self.additional_procedure = None
-        self.goods_domestic_status = None
-        self.exporter_eori = None
-        self.total_packages = None
-        self.movement_type = None
-        self.nationality_of_transport = None
-        self.identity_no_of_transport = None
-        self.postponed_vat = None
-        self.freight_charge_currency = None
-        self.insurance_currency = None
-        self.vat_adjust_currency = None
-        self.incoterm = None
-        self.delivery_location_country = None
-        self.delivery_location_town = None
-
-        ## Goods Inputs
-        self.op_typeGoods = None
-        self.goods_id = None
-        self.type_of_packages = None
-        self.number_of_packages = None
-        self.package_marks = None
-        self.gross_mass_kg = None
-        self.net_mass_kg = None
-        self.goods_description = None
-        self.invoice_number = None
-        self.preference = None
-        self.commodity_code = None
-        self.country_of_origin = None
-        self.country_of_preferential_origin = None
-        self.item_invoice_amount = None
-        self.item_invoice_currency = None
-        self.procedure_code = None
-        self.additional_procedure_code = None
-        self.valuation_method = None
-        self.valuation_indicator = None
-        self.nature_of_transaction = None
-        self.payable_tax_currency = None
-        self.ni_additional_information_codes = None
 
     ######### Gets #########
     def getDraftSups(self):
@@ -164,3 +122,13 @@ class TraderSupportServiceAPI:
             print(response.json())
             print()
         return response.json()
+
+p = TraderSupportServiceAPI("1","1")
+
+print(p.listOfSupVariables)
+
+for index, x in enumerate(p.listOfSupVariables):
+    p.listOfSupVariables[index] = 123
+
+print("Start")
+print(p.listOfSupVariables)

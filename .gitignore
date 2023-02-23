@@ -1,1 +1,5 @@
-*.xlsx
+InputVariablesClass.py
+Input Variables Class.py
+~$TestData1.xlsx
+TSS gen .xlsx
+__pycache__/InputVariablesClass.cpython-39.pyc
